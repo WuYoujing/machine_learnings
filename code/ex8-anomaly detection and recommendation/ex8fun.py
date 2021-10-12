@@ -42,3 +42,9 @@ def select_threshold(pval,yval):
 
         x = np.matrix(np.reshape(params[:num_movies*num_features],(num_movies,num_features)))
         theta = np.matrix(np.reshape(params[num_movies*num_features:],(num_usres,num_features)))
+
+        j = 0
+        error = np.multiply(x*theta.T - y, r)
+        squared_error = np.power(error,2)
+        j = (1/2) * np.sum(squared_error)
+        return j
